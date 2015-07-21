@@ -32,18 +32,10 @@
     int 0x13
     pop es
 
-;chargement de la gdt
-
-
-
-
-
 ; saut vers le kernel
     jmp dword BASE:0
 
 bootdrv: db 0
-
-gdt:
 
 ;; NOP jusqu'a 510
 times 510-($-$$) db 144
