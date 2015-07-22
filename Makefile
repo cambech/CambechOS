@@ -1,15 +1,22 @@
 OBJ=disk
+DIR=./Prog/
 
 all: $(OBJ)
 
-disk: boot noyau
-	cat boot noyau | dd of=disk bs=512
+disk: dossier boot noyau
+	cat $(DIR)/{boot,noyau} | dd of=$(DIR)disk bs=512
 
-noyau: noyau.asm
-	nasm -f bin -o $@ $^
+%: %.asm
+	nasm -f bin -o $(DIR)$@ $^
 
-boot: boot.asm
-	nasm -f bin -o $@ $^
+kernel: *.o
+	ld  -melf_i386 --oformat binary -Ttext 1000 -o $@ $^
+
+%.o: %.c
+	gcc -m32 -c $^
+
+dossier:
+	mkdir -v ./Prog
 
 clean:
-	rm -f disk boot noyau
+	rm -v $(DIR)/*

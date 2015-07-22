@@ -1,7 +1,6 @@
 [BITS 16]
 [ORG 0x0]
 
-
 ; initialisation des segments en 0x100
     mov ax, 0x100
     mov ds, ax

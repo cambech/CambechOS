@@ -7,7 +7,7 @@
     mov ax, 0x07C0
     mov ds, ax
     mov es, ax
-    mov ax, 0x8000  ; stack en 0xFFFF
+    mov ax, 0x9000  ; stack en 0xFFFF
     mov ss, ax
     mov sp, 0xf000
 
@@ -38,5 +38,6 @@
 bootdrv: db 0
 
 ;; NOP jusqu'a 510
+
 times 510-($-$$) db 144
 dw 0xAA55
