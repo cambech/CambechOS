@@ -16,7 +16,7 @@ kernel: *.o
 	gcc -m32 -c $^
 
 dossier:
-	mkdir -v ./Prog
+	mkdir -v $(DIR)
 
 clean:
-	rm -v $(DIR)/*
+	rm -Rv $(DIR)
